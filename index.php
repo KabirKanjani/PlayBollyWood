@@ -1,10 +1,10 @@
 <?php
 session_start();
-if(isset($_GET['checker'])&&$_GET['checker']==12)
+if(isset($_POST['checker'])&&$_POST['checker']==12)
 {
-  echo $_GET['checker'];
+  echo $_POST['checker'];
   $_POST['checker']=0;
-  header('Location:http://localhost/files/git/counter.php?mark=0&Start=Start');
+  header('Location:https://playbollywood.herokuapp.com/');
 
 }
 ?>
@@ -190,13 +190,13 @@ if(isset($_GET['checker'])&&$_GET['checker']==12)
     {
       if(c==0)
       {
-        document.getElementById("box").style.display="block";
+        document.POSTElementById("box").style.display="block";
         c=1;
       }
       else {
-        document.getElementById("box").style.display="none";
+        document.POSTElementById("box").style.display="none";
         c=0;
-        window.location.href="http://localhost/files/git/bollywood/counter.php?mark=0&Start=Start&";
+        window.location.href="http://localhost/files/git/bollywood/https://playbollywood.herokuapp.com/?mark=0&Start=Start&";
           }
     }
   </script>
@@ -208,16 +208,16 @@ if(isset($_GET['checker'])&&$_GET['checker']==12)
     <h1>PLAY BOLLYWOOD</h1>
   </div>
 <input type="hidden" name="OldLetters" value="">
-<form action="counter.php" method="GET" id="bw" name="bollywood" >
+<form action="https://playbollywood.herokuapp.com/" method="POST" id="bw" name="bollywood" >
 <input type="hidden" name="mark" value=0>
 
 <div class="content">
 <?php
-if(!isset($_GET['checker']))
+if(!isset($_POST['checker']))
 {
   echo "<input type='hidden' name='checker'>";
 }
-  if(isset($_GET['change']))
+  if(isset($_POST['change']))
   {
               $_SESSION['count']=0;
               session_destroy();
@@ -225,11 +225,11 @@ if(!isset($_GET['checker']))
               session_start();
   }
 
-  if(isset($_GET['end']))
+  if(isset($_POST['end']))
 {
-  if($_GET['end']==0)
+  if($_POST['end']==0)
   {
-      header('Location:http://localhost/files/git/counter.php?mark=0&Start=Start');
+      header('Location:https://playbollywood.herokuapp.com/');
   }
 }
 if(!isset($_SESSION['oldLetters']))
@@ -238,7 +238,7 @@ if(!isset($_SESSION['count']))
 {
   $_SESSION['count']=9;
 }
-function GETmovie()
+function POSTmovie()
 {
           if(!isset($_SESSION['movie']))
           {
@@ -253,7 +253,7 @@ function GETmovie()
                         $query_run=mysqli_query($connect,$query);
                         $data=mysqli_fetch_assoc($query_run);
                         if(is_null($data['Mname']))
-                        GETmovie();
+                        POSTmovie();
 
                         $data=preg_replace('/[^ \w]+/', '', $data['Mname']);
                         return $data;
@@ -263,13 +263,13 @@ function GETmovie()
 function oldletter()
 {
   $ol="";
-  if(isset($_GET['LetterGuessed']))
+  if(isset($_POST['LetterGuessed']))
   {
 
-      if(isset($_SESSION['oldLetters'])&&!str_contains($_SESSION['oldLetters'],$_GET['LetterGuessed']))
+      if(isset($_SESSION['oldLetters'])&&!str_contains($_SESSION['oldLetters'],$_POST['LetterGuessed']))
       {
         $_SESSION['movie']=strtoupper($_SESSION['movie']);
-        $_SESSION['oldLetters']=$_SESSION['oldLetters']." ".$_GET['LetterGuessed'];
+        $_SESSION['oldLetters']=$_SESSION['oldLetters']." ".$_POST['LetterGuessed'];
         $ol=$_SESSION['oldLetters'];
       }
       else if(isset($_SESSION['oldLetters']))
@@ -287,7 +287,7 @@ function setmovie()
 {
   if(!isset($_SESSION['movie']))
     {
-      $_SESSION['movie']=GETmovie();
+      $_SESSION['movie']=POSTmovie();
     }
 }
 function guessmovie()
@@ -322,9 +322,9 @@ function checkwinlose()
   echo "<div class=result><font size=18>";
   if(isset($_SESSION['guess1'])&&!str_contains($_SESSION['guess1'],'_'))
   {
-    $_GET['checker']=12;
-    echo $_GET['checker'];
-    unset($_GET['$LetterGuessed']);
+    $_POST['checker']=12;
+    echo $_POST['checker'];
+    unset($_POST['$LetterGuessed']);
     echo "You Win";
     $_SESSION['count']=9;
       echo"
@@ -339,12 +339,12 @@ function checkwinlose()
       echo "<SCRIPT LANGUAGE='javascript'>pop();</SCRIPT>";
       session_unset();
       session_destroy();
-      echo "<form name='check' method=GET><input type='hidden' name='end' value='0'></form>";
+      echo "<form name='check' method=POST><input type='hidden' name='end' value='0'></form>";
     }
     if(isset($_SESSION['count'])&&$_SESSION['count']==0)
     {
-      $_GET['checker']=12;
-      unset($_GET['$LetterGuessed']);
+      $_POST['checker']=12;
+      unset($_POST['$LetterGuessed']);
       echo "You Lose"."<br>";
       $_SESSION['count']=9;
       echo"
@@ -363,15 +363,15 @@ function checkwinlose()
         session_unset();
         session_destroy();
       }
-      echo "<form name='check' method=GET><input type='hidden' name='end' value='0'></form>";
+      echo "<form name='check' method=POST><input type='hidden' name='end' value='0'></form>";
 
     }
-      $_GET['LetterGuessed'] = array();
+      $_POST['LetterGuessed'] = array();
       echo "</div></font>";
 }
 function checkguessmovie($x)
 {
-  if(isset($_GET['LetterGuessed']))
+  if(isset($_POST['LetterGuessed']))
   {
       oldLetter();
   }
@@ -381,9 +381,9 @@ function checkguessmovie($x)
               echo "<div class='guess'>";
                   for($i=0;$i<strlen($_SESSION['guess1']);$i++)
                 {
-                    if(isset($_GET['LetterGuessed']))
+                    if(isset($_POST['LetterGuessed']))
                       {
-                      $LetterGuessed=$_GET['LetterGuessed'];
+                      $LetterGuessed=$_POST['LetterGuessed'];
                           if($_SESSION['movie'][$i]==$LetterGuessed)
                             {
                                 $_SESSION['guess1'][$i]=$LetterGuessed;
@@ -439,7 +439,7 @@ echo "</div>";
 }
 
 if(isset($_SESSION['movie']))
-GETmovie();
+POSTmovie();
 setmovie();
 bolly();
 guessmovie();
@@ -448,10 +448,10 @@ if(!isset($_SESSION['lastletter']))
 {
   $_SESSION['lastletter']="";
 }
-if(isset($_GET['LetterGuessed'])&&isset($_SESSION['lastletter']))
+if(isset($_POST['LetterGuessed'])&&isset($_SESSION['lastletter']))
 
 {
-  if($_SESSION['lastletter']==$_GET['LetterGuessed'])
+  if($_SESSION['lastletter']==$_POST['LetterGuessed'])
   {
 
     $pageRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) &&($_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0' ||  $_SERVER['HTTP_CACHE_CONTROL'] == 'no-cache');
@@ -463,7 +463,7 @@ if(isset($_GET['LetterGuessed'])&&isset($_SESSION['lastletter']))
 
     if(isset($_SESSION['guess1']))
     {
-      if(isset($_GET['LetterGuessed']))
+      if(isset($_POST['LetterGuessed']))
       {
           oldLetter();
        }
@@ -484,7 +484,7 @@ else
 {
   if(isset($_SESSION['guess1']))
   {
-    if(isset($_GET['LetterGuessed']))
+    if(isset($_POST['LetterGuessed']))
     {
         oldLetter();
     }
@@ -500,9 +500,9 @@ else
 letters();
 checkwinlose();
 
-if(isset($_GET['LetterGuessed']))
+if(isset($_POST['LetterGuessed']))
 {
-$_SESSION['lastletter']=$_GET['LetterGuessed'];
+$_SESSION['lastletter']=$_POST['LetterGuessed'];
 }
 echo "<br>
  <input type='submit' name='change' class=btn2 value='Change'>
