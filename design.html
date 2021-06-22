@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+</head>
+<meta charset="utf-8">
+<style type="text/css">
+
+h1{
+  font-family: arial;
+}
+  body,h1
+  {
+      margin:0;
+      padding:0;
+
+  }
+  .btn{
+    border: none;
+    font-family: "Roboto",sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    background:#1E90FF;
+    width: 80px;
+    padding:20px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color:#fff;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    -webkit-transform-duration:0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property:box-shadow,transform;
+  }
+  .btn:hover, .btn:focus ,.btn:active
+  {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    -webkit-transform:scale(1.1);
+    transform: scale(1.1);
+  }
+  .text-container h1{
+    font-size: 120px;
+    color:rgba(225,225, 225,0.1);
+    background-image: url(mbg.jpg);
+    background-repeat: repeat-x;
+    -webkit-background-clip:text;
+    animation: animate 15s linear infinite;
+
+  }
+  @keyframes animate{
+    0%
+    {
+      background-position: left 0px top 10px;
+    }
+    40%
+    {
+      background-position: left 800px top 10px;
+    }
+  }
+  .text-container
+  {
+    text-align: center;
+  }
+</style>
+<body >
+      <div class="text-container">
+          <h1>PLAY BOLLYWOOD</h1>
+      </div>
+      <input type="submit" id="LetterGuessed" name="LetterGuessed" value="A" class=btn>
+      <div>
+      </div>
+</body>
+</html>
