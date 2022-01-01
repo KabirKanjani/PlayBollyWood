@@ -1,4 +1,4 @@
-@import "http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css";
+/* @import "http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"; */
 
 .heading h1
 {
@@ -78,12 +78,12 @@ body{
 }
 #box h5
 {
-color: #1E90FF;
+color: #d9001b;
 }
 
 #box span
 {
-  color: #1E90FF;
+  color: #d9001b;
   font-size: 40px;
   display: block;
   margin: 20px 0;
@@ -99,7 +99,7 @@ color: #1E90FF;
   color: white;
   padding: 10px 30px;
   cursor: pointer;
-  background: #3498db;
+  background: #d9001b;
   display: inline-block;
 }
 
